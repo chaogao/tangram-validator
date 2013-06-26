@@ -33,11 +33,11 @@
         var api = baidu.dom("form").validator({lang: "fi"});
 
         api.bind("onBeforeValidate", function(e, errors) {
-            console.info("BEFORE", this, arguments);
+            // console.info("BEFORE", this, arguments); ie no log
         });
 
         api.bind("onFail", function(e, errors) {
-            console.info("FAIL", this, arguments);      
+            // console.info("FAIL", this, arguments); ie no log
         });
 
         baidu.tools.validator.localize("fi", {

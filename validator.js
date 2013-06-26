@@ -243,15 +243,15 @@
     
     */
     
-    v.fn("[type=\"email\"]", "请输入正确的 E-mail 地址", function(el, v) {
+    v.fn('[type="email"]', "请输入正确的 E-mail 地址", function(el, v) {
         return !v || emailRe.test(v);
     });
     
-    v.fn("[type=\"url\"]", "请输入正确的 URL 地址", function(el, v) {
+    v.fn('[type="url"]', "请输入正确的 URL 地址", function(el, v) {
         return !v || urlRe.test(v);
     });
     
-    v.fn("[type=\"number\"]", "请输入数字", function(el, v) {
+    v.fn('[type="number"]', "请输入数字", function(el, v) {
         return numRe.test(v);           
     });
     
