@@ -1,20 +1,17 @@
 <!DOCTYPE html>        
 <head>
     <meta charset="utf-8"></meta>
+    <script src="../lib/tangram.js"></script>
+    <script src="../validator.js"></script>
 </head>
-<script src="../../../tangram.js"></script>
-<script src="../validator.js"></script>
 
 <form action="#" style="margin:100px">
-
     <label for="kama">requred url </label>
-    <input type="email" name="kamaurl" max="8"/>
+    <input type="email" required="required"/>
     </br>
     <button type="submit">Submit</button>
 </form>
 
 <script>
-    baidu.dom("form").validator({grouped: true}).submit(function(e) {
-
-    });
+    baidu.dom("form").validator({grouped: true}).submit(function(e) {alert("submit callback")});
 </script>

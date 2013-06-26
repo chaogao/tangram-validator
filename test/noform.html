@@ -19,15 +19,16 @@
     .invalid {
         border:1px solid red;       
     }
-
-    .error {    
+    
+    .error {
+        display:none;       
         border:1px solid #667;
         background:#eee;
         padding:5px;
     }
 </style>
 
-<form action="#">
+<div class="form" action="#">
 
     <label>
         requred text 
@@ -40,11 +41,6 @@
     </label>
     
     <label>
-        URL
-        <input type="url" value="http://www.spa.gov.sa/NewsHeadlines.php?pg=2&joku+paha" />
-    </label>
-    
-    <label>
         date 
         <input type="date" title="Use format yyyy-mm-dd" name="day" />
     </label>
@@ -54,22 +50,10 @@
         <input type="email" />
     </label>
     
-    <label>
-        terms
-        <input type="checkbox" required="required" name="terms" data-message="Accept the terms" />
-    </label>
-    
-    <label>
-        required
-        <select required="required">
-            <option value="">-- choose one --</option>
-            <option value="8">jotain</option>
-        </select>
-    </label>
-
-    <button type="submit">Submit</button>    
-</form>
+    <button>Submit</button>
+</div>
 
 <script>
-    baidu("form").validator({ position: 'top center'}); 
+    var inputs = baidu.dom(".form input").validator(); 
+    inputs.data("validator").checkValidity();
 </script>
