@@ -1,65 +1,53 @@
 <!DOCTYPE html>        
-
+<html>
 <head>
     <meta charset="utf-8"></meta>
     <script src="../lib/tangram.js"></script>
     <script src="../validator.js"></script>
+    <link href="./base.css" rel="stylesheet" type="text/css">
 </head>
+<body>
+    <h2>比较综合的demo，演示了js方面的功能</h2>
+    <ul>
+        <li>验证事件的监听</li>
+        <li>进行语言包的扩展</li>
+    </ul>
 
-<style>
-    body {
-        padding:100px;      
-        font:11px sans-serif;
-    }
+    <form action="#">
+        <p> number, required：<input type="text" pattern="\d+" required="true" name="abc" /></p>
+        <span class="info">required+pattern验证判断</span>
 
-    input.error {
-        border:1px solid red;       
-    }
+        <p> email：<input type="email" id="emailfield" value="tipiirai@gmail" equals="abc" requires="day, abc"  oninvalid="console.info('jou')" /></p>
+        <span class="info">email验证判断</span>
 
-    div.error {
-        display:none;       
-        border:1px solid #667;
-        background:#eee;
-        padding:0 5px;
-    }
-</style>
-    
+        <p> url <input type="url" value="tipiirai@gmail.com" disabled /></p>
+        <span class="info">url验证判断，但input被disabled时不进行判断</span>
+        
+        <p><input type="number" min="10" max="100" value="joku" /></p>
+        <span class="info">数字范围的判断(10-100)</span>
+        
+        <input type="submit" /> 
+    </form>
 
-<form action="#">
+    <script>
+        var api = baidu.dom("form").validator({lang: "fi"});
 
-    <p> abc, required <input type="text" pattern="\d+" name="abc" /></p>
+        api.bind("onBeforeValidate", function(e, errors) {
+            console.info("BEFORE", this, arguments);
+        });
 
-    <p> date <input type="date" title="Use format yyyy-mm-dd" name="day" min="-40" required="true" /></p>
-    
-    <p> email <input type="email" id="emailfield" value="tipiirai@gmail.com" equals="abc" requires="day, abc"  oninvalid="console.info('jou')" /></p>
-    
-    <p> url <input type="url" value="tipiirai@gmail.com" disabled /></p>
-    
-    <p> [0 - 10] <input type="range" min="10" max="100" value="joku" /></p>
-    
-    <p> [number] <input type="text" min="0" /></p>
+        api.bind("onFail", function(e, errors) {
+            console.info("FAIL", this, arguments);      
+        });
 
-    <input type="submit" /> 
-</form>
-
-<script>
-    var api = baidu.dom("form").validator({lang: "fi"});
-
-    api.bind("onBeforeValidate", function(e, errors) {
-        console.info("BEFORE", this, arguments);
-    });
-
-
-    api.bind("onFail", function(e, errors) {
-        console.info("FAIL", this, arguments);      
-    });
-
-    baidu.tools.validator.localize("fi", {
-        '[type="email"]'        : 'Virheellinen sähköpostiosoite',
-        '[type="number"]'       : 'Arvon on oltava numeerinen',
-        '[type="url"]'          : 'Virheellinen URL',
-        '[max]'         : 'Arvon on oltava pienempi, kuin $1',
-        '[min]'         : 'Arvon on oltava suurempi, kuin $1',
-        '[required]'    : 'Kentän arvo on annettava'
-    });
-</script>
+        baidu.tools.validator.localize("fi", {
+            '[type="email"]'        : 'Virheellinen sähköpostiosoite',
+            '[type="number"]'       : 'Arvon on oltava numeerinen',
+            '[type="url"]'          : 'Virheellinen URL',
+            '[max]'         : 'Arvon on oltava pienempi, kuin $1',
+            '[min]'         : 'Arvon on oltava suurempi, kuin $1',
+            '[required]'    : 'Kentän arvo on annettava'
+        });
+    </script>
+</body>
+</html>

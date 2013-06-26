@@ -1,59 +1,26 @@
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8"></meta>
     <script src="../lib/tangram.js"></script>
     <script src="../validator.js"></script>
+    <link href="./base.css" rel="stylesheet" type="text/css">
 </head>
-
-<style>
-    label {
-        margin:10px 0;
-        display:block;
-    }
-
-    body {
-        padding:100px;      
-        font-family:sans-serif;
-    }
-
-    .invalid {
-        border:1px solid red;       
-    }
+<body>
+    <h2>当没有form表单时的验证</h2>
+    <div class="form" action="#">
+        <label>requred text：<input type="text" required="required" /></label>
+        <span class="info">required验证判断</span>
+        
+        <label>required + pattern：<input type="text" pattern="\d+" required="required" data-message="请输入数字"/></label>
+        <span class="info">required+pattern验证判断</span>
+        
+        <button>Submit</button>
+    </div>
     
-    .error {
-        display:none;       
-        border:1px solid #667;
-        background:#eee;
-        padding:5px;
-    }
-</style>
-
-<div class="form" action="#">
-
-    <label>
-        requred text 
-        <input type="text" required="required" />
-    </label>
-    
-    <label>
-        pattern
-        <input type="text" pattern="\d+" />
-    </label>
-    
-    <label>
-        date 
-        <input type="date" title="Use format yyyy-mm-dd" name="day" />
-    </label>
-    
-    <label>
-        email 
-        <input type="email" />
-    </label>
-    
-    <button>Submit</button>
-</div>
-
-<script>
-    var inputs = baidu.dom(".form input").validator(); 
-    inputs.data("validator").checkValidity();
-</script>
+    <script>
+        var inputs = baidu.dom(".form input").validator(); 
+        inputs.data("validator").checkValidity();
+    </script>
+</body>
+</html>

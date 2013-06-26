@@ -182,16 +182,16 @@
                     }  
                     
                     // clear the container 
-                    msg.css({visibility: 'hidden'}).find("p").remove();
+                    msg.css({visibility: 'hidden'}).find("span").remove();
                     
                     // populate messages
                     $.each(err.messages, function(i, m) { 
-                        $("<p/>").html(m).appendTo(msg);            
+                        $("<span/>").html(m).appendTo(msg);            
                     });
                     
                     // make sure the width is not full body width so it can be positioned correctly
                     if (msg.outerWidth() == msg.parent().width()) {
-                        msg.add(msg.find("p")).css({display: 'inline'});        
+                        msg.add(msg.find("span")).css({display: 'inline'});        
                     } 
                     
                     // insert into correct position (relative to the field)
@@ -272,22 +272,12 @@
     });
     
     v.fn("[required]", "请填写此处数据", function(el, v) {
-        if (el.is("[type=checkbox]")) { return el.is(":checked"); }
+        if (el.is("[type=checkbox]")) { return el.prop("checked"); }
         return !!v;             
     });
     
     v.fn("[pattern]", function(el, v) {
         return v === '' || new RegExp("^" + el.attr("pattern") + "$").test(v);
-    });
-
-    v.fn("radio", "请选择一个选项", function(el) {
-        var checked = false;
-        var els = $("[name='" + el.attr("name") + "']").each(function(i, el) {
-            if ($(el).is(":checked")) {
-                checked = true;
-            }
-        });
-        return (checked) ? true : false;
     });
     
     function Validator(inputs, form, conf) {        
@@ -409,25 +399,12 @@
                 inputs.off(conf.inputEvent + "change");
                 return self.reset();    
             }, 
-            
-            
-//{{{  checkValidity() - flesh and bone of this tool
-                        
+                                    
             /* @returns boolean */
             checkValidity: function(els, e) {
                 
                 els = els || inputs;    
-                els = els.not(":disabled");
-
-                // filter duplicate elements by name
-                var names = {};
-                els = els.filter(function(){
-                    var name = $(this).attr("name");                    
-                    if (!names[name]) {
-                        names[name] = true;
-                        return $(this);
-                    }
-                });
+                els = els.not("[disabled]");
 
                 if (!els.length) { return true; }
 

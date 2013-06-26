@@ -1,21 +1,25 @@
-<!DOCTYPE html>        
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8"></meta>
     <script src="../lib/tangram.js"></script>
     <script src="../validator.js"></script>
+    <link href="./base.css" rel="stylesheet" type="text/css">
 </head>
+<body>
+    <h2>由a标签点击触发form提交，并进行验证</h2>
+    <form action="http://google.com/search">
+        <label>requred text：<input name="q" type="text" required="required" /></label>
+        <a href="#" class="submit">Submit</a>
+    </form>
 
-<form action="http://google.com/search" style="margin:100px">
-    <label>requred text</label>
-    <input name="q" type="text" required="required" />
-    <a href="#" class="submit">Submit</a>
-</form>
+    <script>
+        baidu.dom("form").validator({ position: 'top center'});
 
-<script>
-    baidu.dom("form").validator({ position: 'top center'});
-
-    baidu.dom("a.submit").click(function(e) {
-      e.preventDefault();
-      baidu.dom("form").eq(0).submit();
-    });
-</script>
+        baidu.dom("a.submit").click(function(e) {
+          e.preventDefault();
+          baidu.dom("form").eq(0).submit();
+        });
+    </script>
+</body>
+</html>

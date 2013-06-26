@@ -30,20 +30,21 @@ Get Start
 API
 ------------------
 
-### 在 `<input>` 中可以加入如下验证属性
+#### 在 `<input>` 中可以加入如下验证属性
 *   `required="required"` 验证不能为空
 *   `type="email"` 验证是否为email
 *   `type="url"` 验证是否为url
 *   `type="number"` 验证是否是number
-*   'max'   验证number最大值
-*   'min'   验证number最小值
-*   'pattern'   验证正则
+*   `max=`   验证number最大值
+*   `min=`   验证number最小值
+*   `pattern=`   验证正则
 
-### input 中加入自定义 message
+#### input 中加入自定义 message
 可以在input中加入 `data-message="xxxx"` 用`xxxx`替换默认输入内容
 
-### js 脚本事件
+#### js 脚本事件
 可以为获取的 tangramdom 对象注册事件
+
     api.bind("onBeforeValidate", function(e, errors) {
         console.info("BEFORE", this, arguments);
     });
