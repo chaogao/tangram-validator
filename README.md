@@ -8,7 +8,7 @@ Tangram plugin Validator
 
 
 
-Get Start
+Start
 ---------------
     *   <form action="#" style="margin:100px">
             <label for="kama">requred url </label>
@@ -59,5 +59,20 @@ API
 *   onSuccess 在成功验证时触发
 *   onFail 在验证失败后触发
 
-    
+DEMOS
+------------------------
+在`test`目录下有些demo可以供大家借鉴
+*   minnal.html 一些基本的验证使用方法
+*   noform.html 当没有form表单时的验证
+*   onsubmit.html 在form表单提交时候验证，并监听submit事件
+*   submit-auto.html 由a标签点击触发form提交，并进行验证
+*   validator.html 比较综合的demo，演示了js方面的功能
 
+WARNING
+------------------
+*   必须要tangram支持完整的sizzle选择器，不然ie8以下不能使用。
+*   当前展示验证信息需要tangram库fx（动画）的支持，若不想用动画，则可以自定义展示验证信息
+*   ie6没有测试，不一定好使，之后会支持，使用方法和api不会变
+*   由于并没有产品线用过，上线前要全面测试哦（等酒店ota上线后就稳定了）
+
+目录中的`lib/tangram.js`就可以
