@@ -1,0 +1,26 @@
+<!DOCTYPE html>        
+
+<head>
+        <meta charset="utf-8"></meta>
+
+</head>
+<script src="../../../tangram.js"></script>
+<script src="../validator.js"></script>
+<form action="http://google.com/search" style="margin:100px">
+
+    <label>
+        requred text 
+        <input name="q" type="text" required="required" />
+    </label>
+
+  <a href="#" class="submit">Submit</a>
+</form>
+
+<script>
+baidu.dom("form").validator({ position: 'top center'});
+
+baidu.dom("a.submit").click(function(e) {
+  e.preventDefault();
+  baidu.dom("form").eq(0).submit();
+});
+</script>
